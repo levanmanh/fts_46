@@ -1,0 +1,24 @@
+common: &common
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  host: localhost
+  username: root
+  password: 
+
+development:
+  <<: *common
+  database: fts_development
+
+test:
+  <<: *common
+  database: fts_test
+
+staging:
+  <<: *common
+  database: fts_staging
+
+production:
+  <<: *common
+  database: fts
