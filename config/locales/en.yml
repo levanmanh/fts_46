@@ -21,3 +21,16 @@
 
 en:
   hello: "Hello world"
+  login: "LogIn"
+  edit: "Edit"
+  changePass: "Change Your Password"
+  newPass: "New Password"
+  confirmNewPass: "Confirmation New Password"
+  changePass: "Change My Password"
+  forgotPass: "Forgot Password ?"
+  SendMePass: "Send me reset password instructions"
+  cancelAcc: "Cancel My Account"
+  back: "Back"
+  signUp: "Sign Up"
+  update: "Update"
+  wailConfirm: "Currently waiting confirmation for:"

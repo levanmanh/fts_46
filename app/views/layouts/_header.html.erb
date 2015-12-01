@@ -1,0 +1,13 @@
+<header class="navbar">
+  <div class="col-md-3 col-md-offset-1"></div>
+  <div class="col-md-6 col-md-offset-2">
+    <ul class="nav navbar-nav">
+      <li><%= link_to t("home"), root_path %></li>
+        <% if user_signed_in? %>
+            <%= render "layouts/menu" %>
+        <% else %>
+          <li><%= link_to t("login"), new_user_session_path %></li>
+        <% end %>
+    </ul>
+  </div>
+</header>
