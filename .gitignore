@@ -24,3 +24,4 @@ config/settings/*.local.yml
 config/environments/*.local.yml
 fts_development
 db/schema.rb
+.byebug_history
