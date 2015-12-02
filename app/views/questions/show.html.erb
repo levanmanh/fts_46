@@ -1,0 +1,60 @@
+<div class="col-md-8 col-md-offset-2">
+  <h2><b><%= t "questions.question" %></b></h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td width="40%"><b><%= t "questions.content" %></b></td>
+        <td><%= @question.content %></td>
+      </tr>
+      <tr>
+        <td><b><%= t "questions.options" %></b></td>
+        <td>
+          <table class="talbe">
+            <tbody>
+            <% unless @question.text? %>
+              <% @question.options.each do |option| %>
+                <tr>
+                  <td>
+                    <%= option.content %>
+                  </td>
+                  <td width="15%">
+                    <% if option.is_correct %>
+                      <span class="label label-primary"><%= t "questions.correct" %></span>
+                    <% elsif %>
+                      <span class="label label-danger"><%= t "questions.wrong" %></span>
+                    <% end%>
+                  </td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td><%= option.content %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td><b><%= t "questions.subject" %></b></td>
+        <td><%= @question.subject.name %></td>
+      </tr>
+      <tr>
+        <td><b><%= t "questions.type" %></b></td>
+        <td><%= @question.question_type %></td>
+      </tr>
+      <tr>
+        <td><b><%= t "questions.state" %></b></td>
+        <td>
+          <div class="state-label label label-warning">
+            <%= @question.status %>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    <%= link_to t("edit"), [:edit, current_user, @question],
+      class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
+    <%= link_to t("delete"), [current_user, @question], method: :delete,
+      class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>
+  </div>

@@ -11,7 +11,7 @@
         <%= f.text_area :content, class: "form-control" %>
         <%= f.label :question_type %>
         <%= f.select :question_type,
-          options_for_select(Question.question_types, params[:question_type]),
+          options_for_select(Settings.question.types, params[:question_type]),
           {}, {class: "form-control question-type"} %>
       </div>
       <div class="option-form row">

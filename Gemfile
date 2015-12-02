@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "devise"
 gem "config"
+gem "kaminari"
 gem "bootstrap-sass", "3.2.0.0"
 gem "rails", "4.2.5"
 gem "sqlite3"
