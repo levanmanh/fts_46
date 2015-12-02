@@ -1,8 +1,8 @@
 class Question < ActiveRecord::Base
   enum status: [:waitting, :accepted]
-  enum question_types: [:single, :multiple, :text]
+  enum question_type: [:single, :multiple, :text]
 
-  has_many :options
+  has_many :options, dependent: :destroy
   has_many :sections
   has_many :exams, through: :sections
   belongs_to :user

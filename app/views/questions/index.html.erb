@@ -18,6 +18,24 @@
           <th class="action"></th>
         </tr>
       </thead>
+      <tbody>
+        <% @questions.each_with_index do |question, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= link_to question.content, [current_user, question] %></td>
+            <td><%= question.subject.name %></td>
+            <td><%= question.question_type %></td>
+            <td><%= question.status %></td>
+            <td>
+              <%= link_to t("edit"), [:edit, current_user, question],
+              class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
+              <%= link_to t("delete"), [current_user, question], method: :delete,
+              class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
+    <%= paginate @questions %>
   </div>
 </div>
