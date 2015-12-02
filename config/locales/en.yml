@@ -34,3 +34,5 @@ en:
   signUp: "Sign Up"
   update: "Update"
   wailConfirm: "Currently waiting confirmation for:"
+  profile: "Profile"
+  logout: "Log Out"
