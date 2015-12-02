@@ -28,7 +28,9 @@
               <% end %>
             <% else %>
               <tr>
-                <td><%= option.content %></td>
+                <% @question.options.each do |option| %>
+                  <td><%= option.content %></td>
+                <% end %>
               </tr>
             <% end %>
             </tbody>

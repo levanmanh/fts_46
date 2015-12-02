@@ -7,8 +7,8 @@ $(document).on("click", ".add_fields", function() {
 });
 
 $(document).on("click", ".delete_fields", function() {
-  $(this).parent().find("input[type=hidden]").val("1");
-  $(this).closest(".fields").remove();
+  $(this).closest(".fields").find("input[type=hidden]").val("true");
+  $(this).closest(".fields").hide();
   return false;
 });
 
@@ -20,19 +20,56 @@ function addAnswerForm() {
   $(".correct-select").hide();
 }
 
+/*
+ * remove all options
+ */
+function changeToTextType() {
+  var options = $(".fields");
+  options.each(function(index, option) {
+    $(option).find("input[type=hidden]").val("true");
+  });
+}
+
+/*
+ * remove answer and hide fields
+ */
+function changeFromTextType() {
+  var options = $(".fields");
+  options.each(function(index, option) {
+    $(option).find("input[type=hidden]").val("true");
+  });
+  options.hide();
+}
+
+var previous;
+$(document).on("focus", ".question-type", function() {
+  previous = this.value;
+});
+
 $(document).on("change", ".question-type", function() {
-  if($(this).val() == 0 || $(this).val() == 1) {
+  if($(this).val() == "single") {
     $(".add_fields").show();
-    $(".fields").remove();
-  } else if($(this).val() == 2) {
+    var allCheckboxs = $(".correct-option");
+    allCheckboxs.each(function(index, cb) {
+      $(cb).attr("checked", false);
+    })
+    if(previous == "text")
+      changeFromTextType();
+  } else if ($(this).val() == "multiple") {
+    $(".add_fields").show();
+    if(previous == "text")
+      changeFromTextType();
+  } else if($(this).val() == "text") {
     $(".add_fields").hide();
-    $(".fields").remove();
+    $(".fields").hide();
+    changeToTextType();
     addAnswerForm();
   }
+  previous = $(this).val();
 });
 
 $(document).on("change", ".correct-option", function() {
-  if($(".question-type").val() == 0) {
+  if($(".question-type").val() == "single") {
     var allCheckboxs = $(".correct-option").not($(this));
     allCheckboxs.each(function(index, cb) {
       $(cb).attr("checked", false);
