@@ -57,3 +57,6 @@ en:
     edit: "edit"
     content: "Content"
     options: "Options"
+  exams:
+    success: "Create examination is successfully"
+    create: "Create Exam"

@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-
+gem "faker"
 gem "devise"
 gem "config"
 gem "kaminari"
