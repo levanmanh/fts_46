@@ -3,9 +3,9 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.integer :subject_id
       t.integer :user_id
-      t.integer :type
+      t.integer :question_type
       t.string :content
-      t.integer :status
+      t.integer :status, default: Question.statuses[:accepted]
       t.timestamps null: false
     end
     add_index :questions, :subject_id

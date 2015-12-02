@@ -1,0 +1,23 @@
+<div class="row" id="question">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>
+      <b><%= t "suggested_question" %></b>
+      <%= link_to new_user_question_path, class: "pull-right" do %>
+        <span class="glyphicon glyphicon-plus"></span>
+        <%= t "questions.new" %>
+      <% end %>
+    </h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="number_id"><%= t "questions.stt" %></th>
+          <th class="content"><%= t "questions.question" %></th>
+          <th class="subject"><%= t "questions.subject" %></th>
+          <th class="type"><%= t "questions.type" %></th>
+          <th class="state"><%= t "questions.state" %></th>
+          <th class="action"></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>

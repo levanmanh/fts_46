@@ -1,0 +1,8 @@
+question:
+  type:
+    single_choice: "single_choice"
+    multiple_choice: "multiple_choice"
+    text: "Text"
+  status:
+    waiting: "waiting"
+    approved: "approved"
