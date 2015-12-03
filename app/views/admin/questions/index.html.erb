@@ -1,5 +1,5 @@
-<div class="row" id="question">
-  <div class="col-md-10 col-md-offset-1">
+<div class="row">
+  <div class="col-md-12 col-md-offset-0">
     <h2>
       <b><%= t "suggested_question" %></b>
       <%= link_to new_admin_question_path, class: "pull-right" do %>
@@ -7,6 +7,7 @@
         <%= t "questions.new" %>
       <% end %>
     </h2>
+    <%= render partial: "filter_question_options" %>
     <table class="table">
       <thead>
         <tr>
@@ -15,6 +16,7 @@
           <th class="subject"><%= t "questions.subject" %></th>
           <th class="type"><%= t "questions.type" %></th>
           <th class="state"><%= t "questions.state" %></th>
+          <th class="accept"></th>
           <th class="action"></th>
         </tr>
       </thead>
@@ -25,12 +27,23 @@
             <td><%= link_to question.content, [:admin, question] %></td>
             <td><%= question.subject.name %></td>
             <td><%= question.question_type %></td>
-            <td><%= question.status %></td>
             <td>
-              <%= link_to t("edit"), [:admin, question],
-              class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
+              <% if question.waitting? %>
+                <span class="label label-warning"><%= question.status %></span>
+              <% else %>
+                <span class="label label-success"><%= question.status %></span>
+              <% end %>
+            </td>
+            <td>
+              <% if question.waitting? %>
+                <%= link_to t("questions.accepted"), admin_question_path(question,
+                  question: {status: "accepted"}), method: :patch,
+                  class: "btn btn-primary" %>
+              <% end %>
+            </td>
+            <td>
               <%= link_to t("delete"), [:admin, question], method: :delete,
-              class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>
+              class: "btn btn-danger" %>
             </td>
           </tr>
         <% end %>

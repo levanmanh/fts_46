@@ -55,7 +55,7 @@
       </tr>
     </tbody>
   </table>
-    <%= link_to t("edit"), [:admin, @question],
+    <%= link_to t("edit"), [:edit, :admin, @question],
       class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
     <%= link_to t("delete"), [:admin, @question], method: :delete,
       class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>

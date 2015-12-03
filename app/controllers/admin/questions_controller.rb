@@ -2,8 +2,11 @@ class Admin::QuestionsController < ApplicationController
   before_action :load_subjects, except: [:index, :destroy]
 
   def index
-    @questions = current_user.questions.order("content")
-      .page(params[:page]).per(5)
+    @q = Question.ransack params[:q]
+    option = params[:option].nil? ? Settings.question.filter.all : params[:option]
+    @questions = @q.result.includes(:subject).send(option).page(params[:page])
+      .per Settings.pagination.questions_per_page
+
   end
 
   def new
@@ -51,7 +54,7 @@ class Admin::QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:subject_id, :question_type, :content,
+    params.require(:question).permit(:subject_id, :question_type, :content, :status,
       options_attributes: [:id, :content, :is_correct, :_destroy])
   end
 
