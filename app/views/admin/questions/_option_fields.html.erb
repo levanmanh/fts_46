@@ -1,0 +1,16 @@
+<div class="fields form-group row">
+  <p>
+    <%= f.hidden_field :_destroy %>
+    <%= f.label :content %>
+    <div class="col-md-8">
+      <%= f.text_field :content, class: "form-control" %>
+    </div>
+    <div class="col-md-4 correct-select">
+      <%= f.check_box :is_correct, class: "correct-option" %>
+      <span><%= t "questions.correct_option" %></span>
+      <button class="delete_fields btn btn-danger">
+        <%= t "questions.remove_option" %>
+      </button>
+    </div>
+  </p>
+</div>
