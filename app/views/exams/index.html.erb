@@ -1,0 +1,10 @@
+<div class="col-md-10 col-md-offset-1">
+  <div class="form-exam">
+    <%= form_for @exam, html: {class: "form-inline"} do |f| %>
+      <%= f.collection_select :subject_id, @subjects, :id, :name, {},
+        class: "form-control" %>
+      <%= f.submit t("exams.create") , class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <hr>
+</div>
