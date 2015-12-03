@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  time:
+    formats:
+      default: "%Y-%m-%d %I:%M %p"
   hello: "Hello world"
   login: "LogIn"
   edit: "Edit"
@@ -65,3 +68,5 @@ en:
   exams:
     success: "Create examination is successfully"
     create: "Create Exam"
+    start: "Start Exam"
+    exam: "Exam"

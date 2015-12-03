@@ -1,7 +1,10 @@
 class ExamsController < ApplicationController
+  before_action :check_login
+
   def index
     @exam = Exam.new
     @subjects = Subject.all
+    @exams = current_user.exams
   end
 
   def create
@@ -20,5 +23,12 @@ class ExamsController < ApplicationController
 
   def exam_params
     params.require(:exam).permit :subject_id
+  end
+
+  def check_login
+    if !user_signed_in?
+      flash[:alert] = I18n.t "errors.messages.not_login"
+      redirect_to new_user_session_path
+    end
   end
 end

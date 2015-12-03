@@ -1,0 +1,3 @@
+<% if exam.opened? %>
+  <%= link_to t("exams.start"), edit_exam_path(exam), class: "btn btn-success button" %>
+<% end %>

@@ -4,8 +4,8 @@ class CreateExams < ActiveRecord::Migration
       t.integer :subject_id
       t.integer :user_id
       t.integer :status, default: Exam.statuses[:opened]
-      t.integer :duration, default: 1800
-      t.integer :number_question, default: 10
+      t.integer :duration, default: Exam::TIME_PER_EXAM
+      t.integer :number_question, default: Exam::QUESTION_PER_EXAM
       t.timestamps null: false
     end
     add_index :exams, :subject_id
