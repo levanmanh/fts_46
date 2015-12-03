@@ -11,6 +11,7 @@ class Exam < ActiveRecord::Base
 
   before_create :create_section
 
+  accepts_nested_attributes_for :questions
   def time_per_exam
     Exam::TIME_PER_EXAM / 60
   end

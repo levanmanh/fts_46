@@ -60,6 +60,15 @@ en:
     create: "Create Exam"
     start: "Start Exam"
     exam: "Exam"
+    created_at: "Create Date"
+    subject: "Subject"
+    status: "Status"
+    duration: "Duration"
+    num_ques: "Number Question"
+    spent_time: "Spent Time"
+    score: "Score"
+    enterAnswer: "Enter your answer"
+    timeout: "Out of Time"
   subject:
     titles:
       new: "New subject"

@@ -1,0 +1,17 @@
+<li>
+  <%= f.object.content %>
+</li>
+<br>
+<% if f.object.single? %>
+  <%= f.collection_radio_buttons(:id, f.object.options, :id, :content) do |b| %>
+    <%= b.radio_button + " " +b.text %><br/>
+  <% end %>
+<% elsif f.object.multiple? %>
+  <%= f.collection_check_boxes(:id, f.object.options, :id, :content) do |b| %>
+    <%= b.check_box + " " +b.text %><br/>
+  <% end %>
+<% elsif f.object.text? %>
+  <%= f.text_area :content, class: "form-control", cols: 60, rows: 6, value: "",
+    placeholder: I18n.t("exams.enterAnswer") %><br/>
+<% end %>
+<br>

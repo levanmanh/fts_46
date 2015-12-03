@@ -10,13 +10,13 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Created Date</th>
-        <th>Subject</th>
-        <th>Status</th>
-        <th>Duration</th>
-        <th>Question number</th>
-        <th>Spent Time</th>
-        <th>Score</th>
+        <th><%= t "exams.created_at" %></th>
+        <th><%= t "exams.subject" %></th>
+        <th><%= t "exams.status" %></th>
+        <th><%= t "exams.duration" %></th>
+        <th><%= t "exams.num_ques" %></th>
+        <th><%= t "exams.spent_time" %></th>
+        <th><%= t "exams.score" %></th>
         <th></th>
       </tr>
     </thead>
@@ -35,4 +35,5 @@
       <% end %>
     </tbody>
   </table>
+  <div class="text-center"><%= paginate @exams %></div>
 </div>

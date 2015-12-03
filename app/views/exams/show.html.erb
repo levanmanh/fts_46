@@ -1,0 +1,13 @@
+<div class="col-md-10 col-md-offset-1" id="hongson">
+  <h1 class="text-center" ><%= @exam.subject.name %></h1>
+  <hr>
+  <%= form_for @exam, html: {class: "form-inline"} do |f| %>
+    <ol>
+      <%= f.fields_for :questions do |question| %>
+        <%= render partial: "question_field", locals: {f: question} %>
+      <% end %>
+    </ol>
+  <% end %>
+</div>
+<span id="cdtime" data-duration="<%= @exam.duration %>"
+  data-msgout='<%= t "exams.timeout" %>'></span>
