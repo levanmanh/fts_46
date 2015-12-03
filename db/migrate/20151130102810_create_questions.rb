@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :user_id
       t.integer :question_type
       t.string :content
-      t.integer :status, default: Question.statuses[:accepted]
+      t.integer :status, default: Question.statuses[:waitting]
       t.timestamps null: false
     end
     add_index :questions, :subject_id

@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class Admin::QuestionsController < ApplicationController
   before_action :load_subjects, except: [:index, :destroy]
 
   def index
@@ -13,9 +13,10 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new question_params
     @question.user_id = current_user.id
+    @question.status = Question.statuses[:accepted]
     if @question.save
       flash[:notice] = I18n.t "questions.created"
-      redirect_to user_questions_path
+      redirect_to admin_questions_path
     else
       flash[:alert] = I18n.t "questions.create_fail"
       render :new
@@ -34,7 +35,7 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
     if @question.update_attributes question_params
       flash[:notice] = I18n.t "questions.updated"
-      redirect_to user_questions_path
+      redirect_to admin_questions_path
     else
       flash[:alert] = I18n.t "questions.update_fail"
       render :edit
@@ -43,8 +44,8 @@ class QuestionsController < ApplicationController
 
   def destroy
     Question.find(params[:id]).destroy
-    redirect_to user_questions_path(current_user)
     flash[:notice] = I18n.t "questions.destroyed"
+    redirect_to admin_questions_path
   end
 
   private

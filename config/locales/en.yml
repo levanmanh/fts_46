@@ -57,6 +57,11 @@ en:
     edit: "edit"
     content: "Content"
     options: "Options"
+    created: "Created question"
+    create_fail: "Create question faild!"
+    updated: "Updated question"
+    update_fail: "Update question faild!"
+    destroyed: "Destroyed question"
   exams:
     success: "Create examination is successfully"
     create: "Create Exam"
