@@ -1,0 +1,38 @@
+<% provide :title, t("subject.titles.index") %>
+<div class="row" id="question">
+  <div class="col-md-12 col-md-offset-0">
+    <h2>
+      <b><%= t "subject.titles.index" %></b>
+      <%= link_to new_admin_subject_path, class: "pull-right" do %>
+        <span class="glyphicon glyphicon-plus"></span>
+        <%= t "subject.titles.new" %>
+      <% end %>
+    </h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="number_id"><%= t "subject.header.stt" %></th>
+          <th class="subject"><%= t "subject.header.subject" %></th>
+          <th class="date"><%= t "subject.header.create_at" %></th>
+          <th class="action"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @subjects.each_with_index do |subject, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= link_to subject.name, [:admin, subject] %></td>
+            <td><%= l subject.created_at, format: :define %></td>
+            <td>
+              <%= link_to t("edit"), [:edit, :admin, subject],
+              class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
+              <%= link_to t("delete"), [:admin, subject], method: :delete,
+              class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @subjects %>
+  </div>
+</div>

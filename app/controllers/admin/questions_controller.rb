@@ -1,4 +1,6 @@
 class Admin::QuestionsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :load_subjects, except: [:index, :destroy]
 
   def index
@@ -6,15 +8,9 @@ class Admin::QuestionsController < ApplicationController
     option = params[:option].nil? ? Settings.question.filter.all : params[:option]
     @questions = @q.result.includes(:subject).send(option).page(params[:page])
       .per Settings.pagination.questions_per_page
-
-  end
-
-  def new
-    @question = Question.new
   end
 
   def create
-    @question = Question.new question_params
     @question.user_id = current_user.id
     @question.status = Question.statuses[:accepted]
     if @question.save
@@ -26,16 +22,7 @@ class Admin::QuestionsController < ApplicationController
     end
   end
 
-  def show
-    @question = Question.find params[:id]
-  end
-
-  def edit
-    @question = Question.find params[:id]
-  end
-
   def update
-    @question = Question.find params[:id]
     if @question.update_attributes question_params
       flash[:notice] = I18n.t "questions.updated"
       redirect_to admin_questions_path
@@ -46,7 +33,7 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def destroy
-    Question.find(params[:id]).destroy
+    @question.destroy
     flash[:notice] = I18n.t "questions.destroyed"
     redirect_to admin_questions_path
   end

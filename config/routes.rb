@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "questions#index"
     resources :questions
+    resources :subjects
   end
   resources :exams, only: [:create, :index, :edit]
 

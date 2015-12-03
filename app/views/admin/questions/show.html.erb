@@ -9,7 +9,7 @@
       <tr>
         <td><b><%= t "questions.options" %></b></td>
         <td>
-          <table class="table">
+          <table>
             <tbody>
             <% unless @question.text? %>
               <% @question.options.each do |option| %>
@@ -55,8 +55,8 @@
       </tr>
     </tbody>
   </table>
-    <%= link_to t("edit"), [:edit, :admin, @question],
-      class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
-    <%= link_to t("delete"), [:admin, @question], method: :delete,
-      class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>
-  </div>
+  <%= link_to t("edit"), [:admin, @question],
+    class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
+  <%= link_to t("delete"), [:admin, @question], method: :delete,
+    class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>
+</div>
