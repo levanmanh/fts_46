@@ -28,6 +28,15 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
   end
 
+  def update
+    @question = Question.find params[:id]
+    if @question.update_attributes question_params
+      redirect_to user_questions_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     Question.find(params[:id]).destroy
     redirect_to user_questions_path(current_user)
