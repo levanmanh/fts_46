@@ -1,0 +1,35 @@
+<div class="navbar-form navbar-left">
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <%= t("admin.user.exam_state") %>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to  t("admin.user.exam_all"),
+          admin_user_path(option: :all) %>
+      </li>
+      <li>
+        <%= link_to  t("admin.user.exam_opened"),
+          admin_user_path(option: :opened) %>
+      </li>
+      <li>
+        <%= link_to  t("admin.user.exam_testing"),
+          admin_user_path(option: :testing) %>
+      </li>
+      <li>
+        <%= link_to  t("admin.user.exam_saving"),
+          admin_user_path(option: :saving) %>
+      </li>
+      <li>
+        <%= link_to  t("admin.user.exam_checking"),
+          admin_user_path(option: :checking) %>
+      </li>
+      <li>
+        <%= link_to  t("admin.user.exam_checked"),
+          admin_user_path(option: :checked) %>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<% provide :title, t("users.titles.index") %>
+<div class="row">
+  <div class="col-md-12 col-md-offset-0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="number_id"><%= t "user.table.stt" %></th>
+          <th class="user-mail"><%= t "user.table.mail" %></th>
+          <th class="total-exam"><%= t "user.table.total_exams" %></th>
+          <th class="complete-exam"><%= t "user.table.complete" %></th>
+          <th class="uncomplete-exam"><%= t "user.table.uncomplete" %></th>
+          <th class="action"><%= t "user.table.action" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each_with_index do |user, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= link_to user.email, [:admin, user] %></td>
+            <td><span class="label label-primary"><%= user.exams.size %></span></td>
+            <td><span class="label label-success"><%= user.exams.checked.size %></span></td>
+            <td><span class="label label-warning"><%= user.exams.checking.size %></span></td>
+            <td><%= link_to t("delete"), [:admin, user], method: :delete,
+              class: "btn btn-danger glyphicon glyphicon-trash btn-width" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @users %>
+  </div>
+</div>

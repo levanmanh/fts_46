@@ -89,4 +89,29 @@ en:
     submit:
       create: "Create"
       update: "Update"
+  users:
+    titles:
+      index: "All users"
+      show: "User detail"
+    talbe:
+      stt: "STT"
+      mail: "Email"
+      total_exams: "Total exams"
+      complete: "Complete exams"
+      uncomplete: "Uncomplete exams"
+      action: "Action"
+  admin:
+    user:
+      placeholder: "Type subject name"
+      exam_stt: "STT"
+      exam_subject: "Subject name"
+      exam_create_at: "Create at"
+      exam_state: "State"
+      exam_detail: "Detail"
+      exam_all: "All"
+      exam_opened: "Opened"
+      exam_testing: "Testing"
+      exam_saving: "Saving"
+      exam_checking: "Checking"
+      exam_checked: "Checked"
 
