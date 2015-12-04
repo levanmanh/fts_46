@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :questions
     resources :subjects
   end
-  resources :exams, only: [:create, :index, :edit]
+  resources :exams
 
 end
