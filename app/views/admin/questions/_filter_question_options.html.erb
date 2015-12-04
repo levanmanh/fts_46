@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <div class="navbar-form navbar-left">
+        <%= search_form_for [:admin, @q] do |f| %>
+          <div class="form-group">
+            <%= f.search_field :content_or_subject_name_cont,
+              class: "form-control", placeholder: t("questions.placeholder") %>
+          </div>
+          <%= f.submit t("questions.search"), class: "btn btn-default" %>
+        <% end %>
+      </div>
+      <%= render partial: "filter_as_type" %>
+      <%= render partial: "filter_as_status" %>
+    </div>
+  </div>
+</nav>
