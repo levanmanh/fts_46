@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  resourcify
   enum status: [:waitting, :accepted]
   enum question_type: [:single, :multiple, :text]
 
