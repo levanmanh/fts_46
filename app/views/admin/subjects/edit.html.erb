@@ -1,0 +1,13 @@
+<% provide :title, t("subject.titles.edit") %>
+<div id="question" class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2><b><%= t "subject.titles.edit" %></b></h2>
+    <%= form_for [:admin, @subject] do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <%= f.submit t("subject.submit.update"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

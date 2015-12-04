@@ -1,7 +1,7 @@
 en:
   time:
     formats:
-      default: "%Y-%m-%d %I:%M %p"
+      define: "%A %d-%m-%Y"
   hello: "Hello world"
   login: "LogIn"
   edit: "Edit"
@@ -60,3 +60,24 @@ en:
     create: "Create Exam"
     start: "Start Exam"
     exam: "Exam"
+  subject:
+    titles:
+      new: "New subject"
+      edit: "Edit subject"
+      index: "All subjects"
+      show: "Subject detail"
+    header:
+      stt: "STT"
+      subject: "Sbuject name"
+      create_at: "Create at"
+      total_exams: "Total exams"
+    flash:
+      created: "Create success"
+      create_fail: "Create fail"
+      updated: "Update success"
+      update_fail: "Update fail"
+    create: "Create subject"
+    submit:
+      create: "Create"
+      update: "Update"
+

@@ -1,0 +1,11 @@
+<% provide :title, t("subject.titles.new") %>
+<div id="question" class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2><b><%= t "subject.titles.new" %></b></h2>
+    <%= form_for [:admin, @subject] do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+      <%= f.submit t("subject.submit.create"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

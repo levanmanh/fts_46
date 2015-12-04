@@ -1,0 +1,24 @@
+<% provide :title, t("subject.titles.show") %>
+<div class="col-md-8 col-md-offset-2">
+  <h2><b><%= t "subject.titles.show" %></b></h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td width="40%"><b><%= t "subject.header.subject" %></b></td>
+        <td><%= @subject.name %></td>
+      </tr>
+      <tr>
+        <td><b><%= t "subject.header.create_at" %></b></td>
+        <td><%= l @subject.created_at, format: :define %></td>
+      </tr>
+      <tr>
+        <td><b><%= t "subject.header.total_exams" %></b></td>
+        <td><%= @subject.exams.count %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to t("edit"), [:edit, :admin, @subject],
+    class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
+  <%= link_to t("delete"), [:admin, @subject], method: :delete,
+    class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>
+</div>
