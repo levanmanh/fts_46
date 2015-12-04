@@ -9,7 +9,7 @@
       <tr>
         <td><b><%= t "questions.options" %></b></td>
         <td>
-          <table class="table">
+          <table>
             <tbody>
             <% unless @question.text? %>
               <% @question.options.each do |option| %>
@@ -55,8 +55,10 @@
       </tr>
     </tbody>
   </table>
+  <% if can? :update, @question %>
     <%= link_to t("edit"), [:edit, current_user, @question],
       class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
     <%= link_to t("delete"), [current_user, @question], method: :delete,
       class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>
-  </div>
+  <% end %>
+</div>
