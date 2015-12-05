@@ -13,6 +13,7 @@ function cd(){
   if(now >= end){
     clearTimeout(timerID);
     alert($("#cdtime").data("msgout"));
+    $("#submit-exam").submit();
   }
   else{
     document.getElementById("cdtime").innerHTML = min + ":" + sec;

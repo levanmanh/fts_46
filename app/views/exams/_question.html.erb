@@ -1,0 +1,21 @@
+<li>
+  <%= f.object.question.content %>
+</li>
+<br>
+<% if f.object.question.single? %>
+  <% f.object.question.options.each do |answer| %>
+    <%= f.radio_button :answer, answer.id,
+      {checked: f.object.answer.include?(answer.id.to_s), multiple: true} %>
+      <%= answer.content %></br>
+  <% end %>
+<% elsif f.object.question.multiple? %>
+  <% f.object.question.options.each do |answer| %>
+    <%= f.check_box :answer, {checked: f.object.answer.include?(answer.id.to_s),
+      multiple: true}, answer.id, false %>
+    <%= answer.content %></br>
+  <% end %>
+<% elsif f.object.question.text? %>
+  <%= f.text_area :answer, class: "form-control",  size: "10x4",
+    value: f.object.answer, placeholder: I18n.t("exams.enterAnswer") %><br/>
+<% end %>
+<br>
