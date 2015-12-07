@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-12 col-md-offset-0">
+    <%= render partial: "filter_exam" %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width: 10%"><%= t "admin.exam.stt" %></th>
+          <th style="width: 30%"><%= t "admin.exam.user" %></th>
+          <th style="width: 20%"><%= t "admin.exam.subject" %></th>
+          <th style="width: 10%"><%= t "admin.exam.state" %></th>
+          <th style="width: 10%"><%= t "admin.exam.view" %></th>
+          <th style="width: 10%"><%= t "eadmin.xam.delete" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @exams.each_with_index do |exam, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= link_to exam.user.email %></td>
+            <td><%= link_to exam.subject.name, [:admin, exam.subject] %></td>
+            <td>
+                <span class="label label-warning"><%= exam.status %></span>
+            </td>
+            <td><%= link_to t("exam.view"), [:admin, exam], class: "btn btn-success" %></td>
+            <td>
+              <%= link_to t("delete"), [:admin, exam], method: :delete,
+              class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @exams %>
+  </div>
+</div>

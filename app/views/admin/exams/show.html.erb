@@ -1,0 +1,14 @@
+<div class="col-md-12 col-md-offset-0">
+  <%= form_for [:admin, @exam] do |f| %>
+    <ol>
+      <%= f.fields_for :sections do |section| %>
+        <%= render "question_result", section: section %>
+      <% end %>
+    </ol>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-5">
+        <%= f.submit "submit", class: "btn btn-info" %>
+      </div>
+    </div>
+  <% end %>
+</div>
