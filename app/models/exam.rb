@@ -19,7 +19,7 @@ class Exam < ActiveRecord::Base
   end
 
   def time_remaining
-    self.duration - self.spent_time
+    self.duration - Time.zone.now.to_i + self.started_at - self.spent_time
   end
 
   def change_status_when_test
@@ -33,6 +33,14 @@ class Exam < ActiveRecord::Base
 
   def recalculate_time
     self.spent_time += Time.zone.now.to_i - self.started_at
+  end
+
+  def real_time_spent
+    if self.testing?
+      Exam::TIME_PER_EXAM - self.time_remaining
+    else
+      self.spent_time
+    end
   end
 
   private
