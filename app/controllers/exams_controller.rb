@@ -1,6 +1,5 @@
 class ExamsController < ApplicationController
-  before_action :check_login
-
+  load_resource
   def index
     @exam = Exam.new
     @subjects = Subject.all
@@ -20,18 +19,24 @@ class ExamsController < ApplicationController
   end
 
   def show
-    @exam = Exam.find params[:id]
+    @exam.change_status_when_test
   end
+
+  def update
+    @exam.recalculate_time
+    @exam.status = :checking if params[:commit] == "finish"
+    @exam.status= :saved if params[:commit] == "save"
+    if @exam.update_attributes exam_params
+      redirect_to exams_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def exam_params
-    params.require(:exam).permit :subject_id
-  end
-
-  def check_login
-    if !user_signed_in?
-      flash[:alert] = I18n.t "errors.messages.not_login"
-      redirect_to new_user_session_path
-    end
+    params.require(:exam).permit :subject_id,
+      sections_attributes: [:id, :answer, answer: []]
   end
 end

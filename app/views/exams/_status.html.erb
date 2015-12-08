@@ -1,3 +1,12 @@
 <% if exam.opened? %>
   <span class="label label-primary"><%= exam.status %></span>
 <% end %>
+<% if exam.testing? %>
+  <span class="label label-warning"><%= exam.status %></span>
+<% end %>
+<% if exam.saved? %>
+  <span class="label label-info"><%= exam.status %></span>
+<% end %>
+<% if exam.checking? %>
+  <span class="label label-danger"><%= exam.status %></span>
+<% end %>

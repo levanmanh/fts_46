@@ -2,7 +2,7 @@ class Exam < ActiveRecord::Base
   TIME_PER_EXAM = 1200
   QUESTION_PER_EXAM = 10
 
-  enum status: [:opened, :testing, :saving, :checking, :checked]
+  enum status: [:opened, :testing, :saved, :checking, :checked]
 
   has_many :sections
   has_many :questions, through: :sections
@@ -12,13 +12,28 @@ class Exam < ActiveRecord::Base
   before_create :create_section
 
   accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :sections
   def time_per_exam
     Exam::TIME_PER_EXAM / 60
   end
 
-  def spent_time
-    (Exam::TIME_PER_EXAM - self.duration)/60
+  def time_remaining
+    self.duration - self.spent_time
   end
+
+  def change_status_when_test
+    if self.opened? ||self.saved?
+      self.status = :testing
+      self.started_at = Time.zone.now.to_i
+      self.recalculate_time
+      self.save
+    end
+  end
+
+  def recalculate_time
+    self.spent_time += Time.zone.now.to_i - self.started_at
+  end
+
   private
 
   def create_section

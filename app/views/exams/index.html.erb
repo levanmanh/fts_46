@@ -1,4 +1,4 @@
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-12 col-md-offset-0">
   <div class="form-exam">
     <%= form_for @exam, html: {class: "form-inline"} do |f| %>
       <%= f.collection_select :subject_id, @subjects, :id, :name, {},
@@ -23,7 +23,7 @@
     <tbody>
       <% @exams.each do |exam| %>
         <tr>
-          <td><%= I18n.l exam.created_at, format: :default %></td>
+          <td><%= I18n.l exam.created_at, format: :define %></td>
           <td><%= exam.subject.name %></td>
           <td><%= render partial: "status", locals: {exam: exam} %></td>
           <td><%= exam.time_per_exam %></td>
