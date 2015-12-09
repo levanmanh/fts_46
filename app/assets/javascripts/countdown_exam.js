@@ -6,6 +6,8 @@ function cd(){
   var min = diff.getMinutes();
   if (min < 10){
     min = "0" + min;
+    if (min < 7) { $("#cdtime").css("color", "orange"); }
+    if(min < 3) { $("#cdtime").css("color", "red"); }
   }
   if (sec < 10){
     sec = "0" + sec;
@@ -29,6 +31,5 @@ var ready = function() {
   end.setSeconds(end.getSeconds()+secondsleft);
   cd();
 };
-
 $(document).ready(ready);
 $(document).on("page:load", ready);

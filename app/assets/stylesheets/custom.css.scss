@@ -67,6 +67,14 @@
 }
 span#cdtime {
     font-size: -webkit-xxx-large;
-    font-family: monospace;
+    font-family: clock;
     position: fixed;
+}
+span#cdtime  {
+    text-align: center;
+    padding: 10px;
+    background-color: #111;
+    color: #fff;
+    border-radius: 15px;
+    color: chartreuse
 }
