@@ -8,6 +8,11 @@ question:
     accepted: "accepted"
   filter:
     all: "all"
+admin:
+  user:
+    exam:
+      all: "all"
 pagination:
   questions_per_page: "5"
   subjects_per_page: "5"
+  users_per_page: "5"

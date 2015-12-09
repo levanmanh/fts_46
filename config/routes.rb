@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     root "questions#index"
     resources :questions
     resources :subjects
+    resources :users
+    resources :exams
   end
   resources :exams
 
