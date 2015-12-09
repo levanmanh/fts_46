@@ -13,7 +13,8 @@ function cd(){
   if(now >= end){
     clearTimeout(timerID);
     alert($("#cdtime").data("msgout"));
-    $("#submit-exam").submit();
+    $(".finish-exam").submit();
+    $(location).attr("href", $("#cdtime").data("redirect"));
   }
   else{
     document.getElementById("cdtime").innerHTML = min + ":" + sec;
@@ -30,4 +31,4 @@ var ready = function() {
 };
 
 $(document).ready(ready);
-$(document).on('page:load', ready);
+$(document).on("page:load", ready);

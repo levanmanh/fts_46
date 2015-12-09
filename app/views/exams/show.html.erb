@@ -1,7 +1,10 @@
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-8 col-md-offset-1">
   <h1 class="text-center" ><%= @exam.subject.name %></h1>
   <hr>
   <%= render (@exam.testing? || @exam.saved?) ? "exam" : "exam_result" %>
 </div>
-<span id="cdtime" data-duration="<%= @exam.time_remaining %>"
-  data-msgout='<%= t "exams.timeout" %>'></span>
+<div class="col-md-2">
+  <span id="cdtime" data-duration="<%= @exam.time_remaining %>"
+    data-redirect="<%= url_for controller: "exams", action: "index" %>"
+    data-msgout='<%= t "exams.timeout" %>'></span>
+</div>

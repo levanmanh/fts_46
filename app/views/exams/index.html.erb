@@ -28,7 +28,7 @@
           <td><%= render partial: "status", locals: {exam: exam} %></td>
           <td><%= exam.time_per_exam %></td>
           <td><%= exam.number_question %></td>
-          <td><%= exam.spent_time %></td>
+          <td><%= exam.real_time_spent %></td>
           <td><%= render partial: "score", locals: {exam: exam} %></td>
           <td><%= render partial: "continue", locals: {exam: exam} %></td>
         </tr>

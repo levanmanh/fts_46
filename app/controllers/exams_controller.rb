@@ -3,7 +3,7 @@ class ExamsController < ApplicationController
   def index
     @exam = Exam.new
     @subjects = Subject.all
-    @exams = current_user.exams.page(params[:page]).per 5
+    @exams = current_user.exams.page(params[:page]).per 20
   end
 
   def create
