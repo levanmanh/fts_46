@@ -1,4 +1,5 @@
 class Exam < ActiveRecord::Base
+  resourcify
   TIME_PER_EXAM = 1200
   QUESTION_PER_EXAM = 10
 

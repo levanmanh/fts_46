@@ -12,6 +12,9 @@ admin:
   user:
     exam:
       all: "all"
+exam:
+  filter:
+    all: "all"
 pagination:
   questions_per_page: "5"
   subjects_per_page: "5"

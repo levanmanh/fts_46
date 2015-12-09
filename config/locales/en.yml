@@ -114,4 +114,22 @@ en:
       exam_saving: "Saving"
       exam_checking: "Checking"
       exam_checked: "Checked"
+    exam:
+      search: "Search"
+      placeholder: "Type email or subject name"
+      stt: "STT"
+      user: "User's email"
+      subject: "Subject name"
+      state: "State"
+      view: "View"
+      delete: "Delete"
+      destroyed: "Exam destroyed"
+      types:
+        type: "Type"
+        all: "All"
+        opened: "Opened"
+        testing: "Testing"
+        saving: "Saving"
+        uncheck: "Uncheck"
+        checked: "Checked"
 
