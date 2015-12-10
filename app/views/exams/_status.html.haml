@@ -1,0 +1,15 @@
+- if exam.opened?
+  %span.label.label-primary
+    = exam.status
+
+- if exam.testing?
+  %span.label.label-warning
+    = exam.status
+
+- if exam.saved?
+  %span.label.label-info
+    = exam.status
+
+- if exam.checking?
+  %span.label.label-danger
+    = exam.status

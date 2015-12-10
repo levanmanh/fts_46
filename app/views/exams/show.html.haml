@@ -1,0 +1,9 @@
+.col-md-8.col-md-offset-1
+  %h1.text-center= @exam.subject.name
+  %hr
+  = render (@exam.testing? || @exam.saved?) ? "exam" : "exam_result"
+
+.col-md-2
+  %span#cdtime{"data-duration"=> "#{@exam.time_remaining}",
+    "data-redirect"=> "#{url_for controller: "exams", action: "index"}",
+    "data-msgout"=> "#{t "exams.timeout"}" }

@@ -1,0 +1,5 @@
+.col-md-12.col-md-offset-0
+  = form_for @exam do |f|
+    %ol
+      = f.fields_for :sections do |section|
+        = render "question_result", f: section

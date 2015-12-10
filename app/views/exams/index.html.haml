@@ -1,0 +1,31 @@
+.col-md-12.col-md-offset-0
+  .form-exam
+    = form_for @exam, html: {class: "form-inline"} do |f|
+      = f.collection_select :subject_id, @subjects, :id, :name, {},
+        class: "form-control"
+      = f.submit t("exams.create") , class: "btn btn-primary"
+  %hr
+  %table.table
+    %thead
+      %tr
+        %th= t "exams.created_at"
+        %th= t "exams.subject"
+        %th= t "exams.status"
+        %th= t "exams.duration"
+        %th= t "exams.num_ques"
+        %th= t "exams.spent_time"
+        %th= t "exams.score"
+        %th
+    %tbody
+      - @exams.each do |exam|
+        %tr
+          %td= I18n.l exam.created_at, format: :define
+          %td= exam.subject.name
+          %td= render partial: "status", locals: {exam: exam}
+          %td= exam.time_per_exam
+          %td= exam.number_question
+          %td= exam.real_time_spent
+          %td= render partial: "score", locals: {exam: exam}
+          %td= render partial: "continue", locals: {exam: exam}
+  .text-center
+    = paginate @exams
