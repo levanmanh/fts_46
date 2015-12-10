@@ -1,0 +1,23 @@
+#question.row
+  .col-md-8.col-md-offset-2
+    %h2
+      %b= t "questions.suggest_question"
+    = form_for @question, url: user_questions_path do |f|
+      .row
+        = f.label :subject
+        = f.select :subject_id,
+          options_for_select(@subjects.collect{|subject| [subject.name, subject.id]},
+          params[:subject_id]), {}, { class: "form-control" }
+        = f.label :content
+        = f.text_area :content, class: "form-control"
+        = f.label :question_type
+        = f.select :question_type,
+          options_for_select(Settings.question.types, params[:question_type]),
+          {}, {class: "form-control question-type"}
+      .option-form.row
+        %button.add_fields.btn.btn-primary{"name"=> "options"}
+          = t "questions.add_option"
+      .row
+        = f.submit t("questions.suggest"), class: "btn btn-primary"
+      = new_fields_template f, :options
+

@@ -1,0 +1,12 @@
+.fields.form-group.row
+  %p
+    = f.hidden_field :_destroy
+    = f.label :content
+  .col-md-8
+    = f.text_field :content, class: "form-control"
+  .col-md-4.correct-select
+    = f.check_box :is_correct, class: "correct-option"
+    %span= t "questions.correct_option"
+    %button.delete_fields.btn.btn-danger
+      = t "questions.remove_option"
+

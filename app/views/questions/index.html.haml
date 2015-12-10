@@ -1,0 +1,30 @@
+#question.row
+  .col-md-10.col-md-offset-1
+    %h2
+      %b= t "suggested_question"
+      = link_to new_user_question_path, class: "pull-right" do
+        %span.glyphicon.glyphicon-plus
+        = t "questions.new"
+    %table#user-table.table
+      %thead
+        %tr
+          %th.number_id= t "questions.stt"
+          %th.content= t "questions.question"
+          %th.subject= t "questions.subject"
+          %th.type= t "questions.type"
+          %th.state= t "questions.state"
+          %th.action
+      %tbody
+        - @questions.each_with_index do |question, index|
+          %tr
+            %td= index + 1
+            %td= link_to question.content, [current_user, question]
+            %td= question.subject.name
+            %td= question.question_type
+            %td= question.status
+            %td
+              = link_to t("edit"), [:edit, current_user, question],
+                class: "btn btn-primary glyphicon glyphicon-pencil btn-width"
+              = link_to t("delete"), [current_user, question], method: :delete,
+                class: "btn btn-danger glyphicon glyphicon-trash btn-width"
+
