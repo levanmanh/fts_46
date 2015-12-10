@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+gem "haml-rails", "~> 0.9"
 gem "faker"
 gem "devise"
 gem "config"
