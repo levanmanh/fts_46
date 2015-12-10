@@ -1,6 +1,6 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path("../boot", __FILE__)
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -27,5 +27,6 @@ module Fts46
     config.autoload_paths += %W(#{config.root}/app/workers)
     config.time_zone = "Asia/Bangkok"
     config.active_record.default_timezone = :local
+    config.autoload_paths << Rails.root.join("services")
   end
 end

@@ -5,6 +5,7 @@ en:
   hello: "Hello world"
   login: "LogIn"
   edit: "Edit"
+  account: "Acount"
   changePass: "Change Your Password"
   newPass: "New Password"
   confirmNewPass: "Confirmation New Password"
