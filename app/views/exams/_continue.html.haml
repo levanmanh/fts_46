@@ -1,0 +1,11 @@
+- if exam.opened? || exam.testing?
+  = link_to t("exams.start"), exam_path(exam),
+    class: "btn btn-success button exam"
+
+- if exam.saved?
+  = link_to t("exams.continue"), exam_path(exam),
+    class: "btn btn-success button exam"
+
+- if exam.checking?
+  = link_to t("exams.view"), exam_path(exam),
+    class: "btn btn-inverse button exam"
