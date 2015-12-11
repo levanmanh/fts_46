@@ -69,6 +69,10 @@ en:
     score: "Score"
     enterAnswer: "Enter your answer"
     timeout: "Out of Time"
+    manage_exams: "Manage exams"
+    manage_users: "Manage users"
+    manage_subjects: "Manage subjects"
+    manage_questions: "Manage questions"
   subject:
     titles:
       new: "New subject"

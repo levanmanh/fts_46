@@ -4,6 +4,9 @@
     html: { method: :put }) do |f|
     = devise_error_messages!
     .field
+      = f.label :name
+      = f.text_field :name, autofocus: true, class: "form-control"
+    .field
       = f.label :email
       %br
       = f.email_field :email, autofocus: true, class: "form-control"

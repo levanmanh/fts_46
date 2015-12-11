@@ -1,5 +1,17 @@
-%li
-  = link_to t("exams.exam"), exams_path
+- if can? :manage, :all
+  %li
+    = link_to t("exams.manage_users"), admin_users_path
+  %li
+    = link_to t("exams.manage_exams"), admin_exams_path
+  %li
+    = link_to t("exams.manage_subjects"), admin_subjects_path
+  %li
+    = link_to t("exams.manage_questions"), admin_questions_path
+
+- if cannot? :manage, :all
+  %li
+    = link_to t("exams.exam"), exams_path
+
 %li.dropdown
   %a.dropdown-toggle{"href"=>"#","data-toggle"=>"dropdown"}
     = t"Account"
@@ -10,3 +22,5 @@
     %li.divider
     %li
       = link_to t("logout"), destroy_user_session_path, method: "delete"
+
+
