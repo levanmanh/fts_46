@@ -11,6 +11,8 @@ class Exam < ActiveRecord::Base
   belongs_to :subject
 
   before_create :create_section
+  after_update :send_email_result_exam
+  after_create :send_email_delay_exam
 
   accepts_nested_attributes_for :questions
   accepts_nested_attributes_for :sections
@@ -40,6 +42,28 @@ class Exam < ActiveRecord::Base
       Exam::TIME_PER_EXAM - self.time_remaining
     else
       self.spent_time
+    end
+  end
+
+  def send_email_result_exam
+    HardWorker.perform_async self.id
+  end
+
+  def send_email_delay_exam
+    ExamMailer.notify_delay(self).deliver_now
+  end
+  handle_asynchronously :send_email_delay_exam,
+    run_at: Proc.new {8.hours.from_now}
+
+  class << self
+    def notify_when_end_of_month
+      Exam.all.each do |exam|
+        ExamMailer.notice_when_end_of_month(exam).deliver_now
+      end
+    end
+
+    def statistic_exam
+      self.sections.where(result: true).size
     end
   end
 

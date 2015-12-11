@@ -132,4 +132,8 @@ en:
         saving: "Saving"
         uncheck: "Uncheck"
         checked: "Checked"
+  email:
+    exam_subject: "Subject name"
+    exam_delay: "Exam don't start after 8 hours"
+    exam_result: "Number of correct questions"
 
