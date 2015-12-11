@@ -10,6 +10,7 @@ gem "rolify"
 gem "sidekiq"
 gem "delayed_job_active_record"
 gem "whenever", require: false
+gem "friendly_id"
 gem "bootstrap-sass", "3.2.0.0"
 gem "rails", "4.2.5"
 gem "sqlite3"
