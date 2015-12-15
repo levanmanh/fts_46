@@ -3,9 +3,8 @@ Subject.create!(name:  "Git")
 Subject.create!(name:  "Ruby On Rails")
 Subject.create!(name:  "Android")
 Subject.create!(name:  "Java")
-User.create!(email: "admin@gmail.com",
-              encrypted_password: "admin1234",
-              password: "admin1234")
+User.create!(name: Faker::Name.name, email: "admin@gmail.com",
+  encrypted_password: "admin1234", password: "admin1234").add_role :admin
 
 50.times do |n|
 

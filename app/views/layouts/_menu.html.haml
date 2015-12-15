@@ -11,6 +11,8 @@
 - if cannot? :manage, :all
   %li
     = link_to t("exams.exam"), exams_path
+  %li
+    = link_to t("questions.new"), user_questions_path(current_user)
 
 %li.dropdown
   %a.dropdown-toggle{"href"=>"#","data-toggle"=>"dropdown"}
