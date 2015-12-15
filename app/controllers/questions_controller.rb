@@ -1,8 +1,10 @@
 class QuestionsController < ApplicationController
+  load_and_authorize_resource
   before_action :load_subjects, except: [:index, :destroy]
 
   def index
-    @questions = current_user.questions.order("content")
+    @user = User.friendly.find(params[:user_id])
+    @questions = @user.questions.order("content")
       .page(params[:page]).per(5)
   end
 
@@ -15,7 +17,7 @@ class QuestionsController < ApplicationController
     @question.user_id = current_user.id
     if @question.save
       flash[:notice] = I18n.t "questions.created"
-      redirect_to user_questions_path
+      redirect_to user_questions_path current_user
     else
       flash[:alert] = I18n.t "questions.create_fail"
       render :new

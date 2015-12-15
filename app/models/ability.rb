@@ -5,8 +5,9 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
-      can :read, Question
       can :manage, Question, user_id: user.id
+      can :manage, Exam, user_id: user.id
+      cannot :destroy, Exam
     end
   end
 end
