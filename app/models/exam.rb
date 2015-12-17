@@ -21,7 +21,9 @@ class Exam < ActiveRecord::Base
   end
 
   def time_remaining
-    self.duration - Time.zone.now.to_i + self.started_at - self.spent_time
+    if self.opened? || self.testing? || self.saved?
+      self.duration - Time.zone.now.to_i + self.started_at - self.spent_time
+    end
   end
 
   def change_status_when_test
