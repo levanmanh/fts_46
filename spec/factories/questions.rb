@@ -20,4 +20,17 @@ FactoryGirl.define do
     question_type :text
     status :waitting
   end
+  factory :question, class: Question do
+    content{Faker::Lorem.word}
+    user {FactoryGirl.create :user}
+    subject {FactoryGirl.create :subject}
+    question_type [:single, :multiple, :text].sample
+    status :waitting
+  end
+  factory :question_fail, class: Question do
+    user {FactoryGirl.create :user}
+    subject {FactoryGirl.create :subject}
+    status :waitting
+  end
+
 end
