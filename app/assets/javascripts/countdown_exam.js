@@ -15,8 +15,7 @@ function cd(){
   if(now >= end){
     clearTimeout(timerID);
     alert($("#cdtime").data("msgout"));
-    $(".finish-exam").submit();
-    $(location).attr("href", $("#cdtime").data("redirect"));
+    $(".finish-exam").click();
   }
   else{
     document.getElementById("cdtime").innerHTML = min + ":" + sec;
