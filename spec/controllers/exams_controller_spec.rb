@@ -25,4 +25,5 @@ RSpec.describe ExamsController, type: :controller do
     before {get :show, id: exam}
     it {expect(response).to render_template :show}
   end
+
 end
